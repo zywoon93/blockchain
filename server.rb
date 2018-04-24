@@ -1,11 +1,15 @@
 # encoding ; UFT-8
 
 require 'sinatra'
+require './block'
 
-get '/mining' do
-	"<h1 style='text-align:center'>회원가입페이지 입니다</h1>"
+aaaaa = Dog.new
+
+get '/' do
+	"Dog" + aaaaa.my_weight
 end
-get '/join'do
 
-
+get '/eat'do
+aaaaa.eat
+'먹었음'
 end
