@@ -15,12 +15,16 @@ class Blockchain
     block = {
 	"index" => @chain.size + 1,
 	"time" => Time.now,
-	"nonce" => nonce
-}
+	"nonce" => nonce,
+	"previous_address" => Digest::SHA256.hexdigest(last_block.to_s)
+	}
      @chain << block
-
-    history.size
+    block
 	end
+
+    def last_block
+	@chain[-1]
+    end
 
     def all_chains
     	@chain
