@@ -7,7 +7,9 @@ b = Blockchain.new
 
 
 get '/'do 
- b.all_chains.to_s
+message = ""
+
+ b.all_chains.each do
 end
 
 get '/mine' do
