@@ -10,7 +10,8 @@ get '/'do
 message = ""
 
  b.all_chains.each do |a|
- 	message << a["index"].to_s + "<br>"
+ 	message << "번호는 : " +a["index"].to_s + "<br>"
+ 	message << "<hr>"
 end
 
 message
