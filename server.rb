@@ -10,7 +10,7 @@ get '/'do
 message = ""
 
  b.all_chains.each do |a|
- 	message << a['indext'].to_s + "<br>"
+ 	message << a["index"].to_s + "<br>"
 end
 
 message
