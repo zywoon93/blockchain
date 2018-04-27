@@ -13,11 +13,11 @@ class Blockchain
         end while hashed[0..3] != "0000"
 
     block = {
-	"index" => 1,
-	"time" => 20329384,
-	"nonce" => 3234
+	"index" => @chain.size + 1,
+	"time" => time.now,
+	"nonce" => nonce
 }
-
+     @chain << block
 
     history.size
 	end
