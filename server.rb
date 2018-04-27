@@ -1,17 +1,15 @@
 # encoding: UTF-8
 
-require 'sinatra'
-require './block'
+require 'sinatra' 
+require './block' 
 
 b = Blockchain.new
 
 
 get '/'do 
-"It's block list."
-	
+ b.all_chains.to_s
 end
 
 get '/mine' do
-	b.mining.to_s
-	
+	b.mining.to_s	
 end

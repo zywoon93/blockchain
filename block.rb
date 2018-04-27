@@ -14,11 +14,15 @@ class Blockchain
 
     block = {
 	"index" => @chain.size + 1,
-	"time" => time.now,
+	"time" => Time.now,
 	"nonce" => nonce
 }
      @chain << block
 
     history.size
 	end
+
+    def all_chains
+    	@chain
+    end
 end
