@@ -1,3 +1,5 @@
+
+require 'securerandom'
 require 'digest'
 
 class Blockchain #class 다음의 문자는 꼭 대문자
@@ -5,20 +7,43 @@ class Blockchain #class 다음의 문자는 꼭 대문자
 	def initialize  
 		@chain = []
 		@trans = []
-		 #@처음부터 끝까지 관통하는 속성 
+		@wallet = {}#@처음부터 끝까지 관통하는 속성 
 	end
+    
+    def wallet_list
+    	@wallet
+    end
+
+	def make_a_wallet
+		address = SecureRandom.uuid.gsub("-", "")
+		@wallet[address] = 100
+         
+        @wallet
+     end
+
 
 	def make_a_trans(s, r, a)
+	   
+       if @wallet[s].nil?
+       	"Empty sender wallet"
+       elsif @wallet[r].nil?
+       	"Empty recipient wallet"
+       elsif @wallet[s].to_f < a.to_f
+       	"Short of money"
+       else
+
+       	@wallet[s] = @wallet[s] - a.to_f
+       	@wallet[r] = @wallet[r] + a.to_f
+
 		trans = {
 			"sender" => s,
 			"recv" => r,
 			"amount" => a
-
 		}
-		@trans << trans #저장
+		@trans << trans #거래정보 저장
 		"다음 블럭에 쓰여집니다." + (@chain.length + 1).to_s
-	end
-
+	    end
+end
 
 	def mining
 		
