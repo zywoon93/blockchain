@@ -40,7 +40,7 @@ get '/trans' do #trans 로직을 돌려라
 end
 
 get '/new_wallet' do 
-    blockchain.make_a_new_wallet.to_s	
+    blockchain.make_a_wallet.to_s	
 end
 
 get '/all_wallet' do
